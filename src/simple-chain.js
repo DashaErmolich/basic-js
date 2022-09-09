@@ -28,7 +28,7 @@ const chainMaker = {
       throw new Error("You can't remove incorrect link!");
     }
     this.arr.splice(position - 1, 1);
-    return this
+    return this;
   },
   reverseChain() {
     // throw new NotImplementedError('Not implemented');
@@ -49,4 +49,3 @@ module.exports = {
   chainMaker
 };
 
-console.log(chainMaker.reverseChain().reverseChain().reverseChain().addLink(NaN).reverseChain().addLink(null).addLink(1.233).addLink(true).addLink(false).removeLink(3).addLink(1.233).finishChain())
