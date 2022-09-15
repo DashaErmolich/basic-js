@@ -23,27 +23,22 @@ class DepthCalculator {
     // remove line with error and write your code here
 
     let flattenArr = array.flat();
-
-    for (let i = 0; i < array.length; i++) {
-
-      if (Array.isArray(array[i])) {
-        this.depth += 1;
-        this.isInnerMode = true;
-        this.calculateDepth(flattenArr);
-
-     } else {
-      this.isInnerMode = false;
-      continue;
-     }
-    }
     
     if (this.isInnerMode === false) {
+      for (let i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+          this.depth += 1;
+          this.isInnerMode = true;
+          this.calculateDepth(flattenArr);
       const result = this.depth;
       this.depth = 1;
       return result;
     } else {
-      return this.depth
+      this.isInnerMode = false;
+      continue;
     }
+  }
+}
   }
 }
 
@@ -54,4 +49,4 @@ module.exports = {
 };
 
 const newD = new DepthCalculator();
-console.log(newD.calculateDepth([1, []]))
+console.log(newD.calculateDepth([1, [[]]]))
