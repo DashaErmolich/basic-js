@@ -15,31 +15,44 @@ const { NotImplementedError } = require('../extensions/index.js');
 class DepthCalculator {
   constructor() {
     this.depth = 1;
-    this.isInnerMode = false;
+    this.counter = 0;
   }
+
 
   calculateDepth(array) {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
 
-    let flattenArr = array.flat();
-    
-    if (this.isInnerMode === false) {
-      for (let i = 0; i < array.length; i++) {
-        if (Array.isArray(array[i])) {
-          this.depth += 1;
-          this.isInnerMode = true;
-          this.calculateDepth(flattenArr);
+
+    let counter = 0;
+
+    for (let i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        counter += 1;
+        this.counter +=1;
+        break;
+      } 
+    }
+
+    // console.log(index)
+
+    this.depth += counter;
+
+    if (counter !== 0) {
+      let flattenArr = array.flat();
+      this.calculateDepth(flattenArr);
+    } 
+
+    if (this.counter === 0) {
       const result = this.depth;
       this.depth = 1;
-      return result;
+      return result
     } else {
-      this.isInnerMode = false;
-      continue;
+      this.counter -= 1;
     }
+    
   }
-}
-  }
+
 }
 
 
@@ -49,4 +62,17 @@ module.exports = {
 };
 
 const newD = new DepthCalculator();
-console.log(newD.calculateDepth([1, [[]]]))
+
+console.log(newD.calculateDepth([1, [2, []], []]));
+console.log(newD.calculateDepth([1, [2]]));
+console.log(newD.calculateDepth([1, 2, 3, 4, 5, [1]]))// 2);
+console.log(newD.calculateDepth([1, 2, 3, [8, [2]], 4, 5, []]))//, 3);
+console.log(newD.calculateDepth([1, 2, 3, [1], 4, 5, [1]]))//, 2);
+console.log(newD.calculateDepth([1, [8, [[]]], [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]], []]]], []]]]]]]]], []]]], []]]]]]]]]], 2, 3, [8, [[[[[[[[[[[[[[]]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))// 31);
+
+console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, []], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))//, 5);
+console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))//, 25);
+console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, []], 4, 5, []]))//, 4);
+console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))//, 15);
+        
+
