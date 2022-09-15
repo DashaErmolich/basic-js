@@ -16,7 +16,7 @@ function deleteDigit(n) {
   // remove line with error and write your code here
   let numToArr = String(n).split('');
 
-  let numCombinations = []
+  let numCombinations = [];
 
   for (let i = 0; i < numToArr.length; i++) {
     let tmp = [...numToArr];
@@ -25,7 +25,7 @@ function deleteDigit(n) {
     numCombinations.push(num);
   }
 
-  return Math.max(...numCombinations)
+  return Math.max(...numCombinations);
 
 }
 
