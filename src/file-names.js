@@ -32,8 +32,8 @@ function renameFiles(names) {
       if (uniq.includes(names[i])) {
         counter += 1;
         names[i] += `(${counter})`;
-        result.push(names[i])
-        uniq.push(names[i])
+        result.push(names[i]);
+        uniq.push(names[i]);
       } else {
         counter = 0;
         result.push(names[i]);
@@ -41,6 +41,7 @@ function renameFiles(names) {
       }
     }
   }
+  
   return result;
 
 }
