@@ -23,7 +23,6 @@ class DepthCalculator {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
 
-
     let counter = 0;
 
     for (let i = 0; i < array.length; i++) {
@@ -33,8 +32,6 @@ class DepthCalculator {
         break;
       } 
     }
-
-    // console.log(index)
 
     this.depth += counter;
 
@@ -50,29 +47,9 @@ class DepthCalculator {
     } else {
       this.counter -= 1;
     }
-    
   }
-
 }
-
-
 
 module.exports = {
   DepthCalculator
 };
-
-const newD = new DepthCalculator();
-
-console.log(newD.calculateDepth([1, [2, []], []]));
-console.log(newD.calculateDepth([1, [2]]));
-console.log(newD.calculateDepth([1, 2, 3, 4, 5, [1]]))// 2);
-console.log(newD.calculateDepth([1, 2, 3, [8, [2]], 4, 5, []]))//, 3);
-console.log(newD.calculateDepth([1, 2, 3, [1], 4, 5, [1]]))//, 2);
-console.log(newD.calculateDepth([1, [8, [[]]], [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]], []]]], []]]]]]]]], []]]], []]]]]]]]]], 2, 3, [8, [[[[[[[[[[[[[[]]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))// 31);
-
-console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, []], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))//, 5);
-console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))//, 25);
-console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, []], 4, 5, []]))//, 4);
-console.log(newD.calculateDepth([1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], 4, 5, ['6575', ['adas', ['dfg', [0]]]]]))//, 15);
-        
-
